@@ -1,6 +1,8 @@
 import  React from 'react';
-import {MapContainer, TileLayer,Marker, Popup} from 'react-leaflet'
-
+import {MapContainer, TileLayer,Marker, Popup} from 'react-leaflet';
+//import Draw from './components/Draw';
+//import Draw from './components/Draw';
+import Draw from './Draw';
 
 function Basemap () {
     const position = [36.805, 10.189]
@@ -17,6 +19,9 @@ function Basemap () {
           A pretty CSS3 popup. <br /> Easily customizable.
         </Popup>
       </Marker>
+
+       <Draw />
+
     </MapContainer>
       </div>
     );
