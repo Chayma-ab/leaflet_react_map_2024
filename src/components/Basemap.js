@@ -4,8 +4,12 @@ import {MapContainer, TileLayer,Marker, Popup} from 'react-leaflet';
 //import Draw from './components/Draw';
 import Draw from './Draw';
 
+
+var Shapes;
+
 function Basemap () {
     const position = [36.805, 10.189]
+    console.log(position)
           
     return (
       <div className="App">

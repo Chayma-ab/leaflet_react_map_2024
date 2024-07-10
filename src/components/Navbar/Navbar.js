@@ -1,12 +1,12 @@
 import React from 'react';
 import './Navbar.css'
+import Search from '../Search/Search';
 
 function Navbar() {
     return (
-        <header>
-            <h1>features</h1>
-
-        </header>
+       <div>
+        <Search  />
+       </div>
     );
 }
 
