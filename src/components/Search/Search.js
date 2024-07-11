@@ -24,7 +24,7 @@ function Search({ shapes, selectedShapes, setSelectedShapes }) {
                     <option key={key} value={shape.name}>{shape.name}</option>
                 ))}
             </select> */}
-            <Dropdown>
+            <Dropdown className="mainDropdown">
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                     Dropdown Button
                 </Dropdown.Toggle>
