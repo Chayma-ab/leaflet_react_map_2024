@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Map, TileLayer, Marker, Popup, withLeaflet } from 'react-leaflet';
 import { Circle, Polygon, Polyline, Rectangle } from 'react-leaflet';
 import Draw from './Draw';
@@ -13,9 +13,7 @@ function Basemap({ shapes, setShapes, selectedShapes }) {
 
     const position = [36.805, 10.189];
 
-    const filteredShapes = selectedShapes.length === 0 || selectedShapes.includes('all')
-        ? shapes
-        : shapes.filter(shape => selectedShapes.includes(shape.name));
+    const filteredShapes = shapes.filter(shape => shape.visible);
 
     const renderShape = (shape) => {
         switch (shape.type) {
@@ -34,6 +32,10 @@ function Basemap({ shapes, setShapes, selectedShapes }) {
         }
     };
 
+    // useEffect(()=> {
+        
+    // }, [shapes])
+
     return (
         <div className="App">
             <Map center={position} zoom={13} scrollWheelZoom={false}>
@@ -47,6 +49,7 @@ function Basemap({ shapes, setShapes, selectedShapes }) {
                     </Popup>
                 </Marker>
                 <Draw shapes={shapes} setShapes={setShapes} />
+                {filteredShapes.map(renderShape)}
                 <PrintControl
                 ref={printControlRef}
                 position="topleft"

@@ -12,6 +12,8 @@ L.Icon.Default.mergeOptions({
 });
 
 class Shape {
+    visible = false;
+
     constructor(type, name, layer) {
         this.type = type;
         this.name = name;
@@ -23,6 +25,7 @@ function Draw({ shapes, setShapes }) {
     const _created = (e) => {
         const name = prompt('What is the object name:', 'write name here');
         const obj = new Shape(e.layerType, name, e.layer);
+        e.layer.remove()
         setShapes((prevShapes) => [...prevShapes, obj]);
     };
 

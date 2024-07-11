@@ -2,10 +2,10 @@ import React from 'react';
 import './Navbar.css';
 import Search from '../Search/Search';
 
-function Navbar({ shapes, selectedShapes, setSelectedShapes }) {
+function Navbar({ shapes, setShapes, selectedShapes, setSelectedShapes }) {
     return (
         <div>
-            <Search shapes={shapes} selectedShapes={selectedShapes} setSelectedShapes={setSelectedShapes} />
+            <Search shapes={shapes} setShapes={setShapes} selectedShapes={selectedShapes} setSelectedShapes={setSelectedShapes} />
         </div>
     );
 }

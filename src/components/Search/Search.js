@@ -3,7 +3,7 @@ import './search.css';
 
 import { Dropdown } from 'react-bootstrap';
 
-function Search({ shapes, selectedShapes, setSelectedShapes }) {
+function Search({ shapes, setShapes, selectedShapes, setSelectedShapes }) {
     const handleChange = (event) => {
         // const options = event.target.options;
         // const selected = [];
@@ -13,9 +13,20 @@ function Search({ shapes, selectedShapes, setSelectedShapes }) {
         //     }
         // }
         // setSelectedShapes(selected);
-        console.log("change value of dropdown")
+        console.log(event)
     };
 
+    
+    function HighlightShape(name){
+        var selected = shapes.find(s=> s.name == name)
+        console.log(selected)
+    }
+
+    const ToggleShape = (sh) => {
+        sh.visible = !sh.visible
+        setShapes([...shapes])
+        console.log(shapes)
+    }
     return (
         <div>
             {/* <select multiple={true} >
@@ -24,14 +35,14 @@ function Search({ shapes, selectedShapes, setSelectedShapes }) {
                     <option key={key} value={shape.name}>{shape.name}</option>
                 ))}
             </select> */}
-            <Dropdown className="mainDropdown">
+            <Dropdown className="mainDropdown" onSelect={function(evt){console.log(evt)}}>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                     Dropdown Button
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu value={selectedShapes} onChange={handleChange}>
+                <Dropdown.Menu >
                     {shapes.map((shape, key) => (
-                        <Dropdown.Item value={shape.name}>{shape.name}</Dropdown.Item>
+                        <Dropdown.Item onClick={() => ToggleShape(shape)}  key={key}>{shape.name}</Dropdown.Item>
                     ))}
                 </Dropdown.Menu>
             </Dropdown>

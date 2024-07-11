@@ -9,7 +9,7 @@ function App() {
 
     return (
         <div>
-            <Navbar shapes={shapes} selectedShapes={selectedShapes} setSelectedShapes={setSelectedShapes} />
+            <Navbar shapes={shapes} setShapes={setShapes} selectedShapes={selectedShapes} setSelectedShapes={setSelectedShapes} />
             <Basemap shapes={shapes} setShapes={setShapes} selectedShapes={selectedShapes} />
         </div>
     );
