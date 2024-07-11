@@ -1,10 +1,16 @@
 import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map, TileLayer, Marker, Popup, withLeaflet } from 'react-leaflet';
 import { Circle, Polygon, Polyline, Rectangle } from 'react-leaflet';
 import Draw from './Draw';
-import ExportButton from './ExportButton';  // Import the new ExportButton component
+import { useRef } from "react";
+
+import PrintControlDefault from "react-leaflet-easyprint";
+
+const PrintControl = withLeaflet(PrintControlDefault);
 
 function Basemap({ shapes, setShapes, selectedShapes }) {
+    const printControlRef = useRef();
+
     const position = [36.805, 10.189];
 
     const filteredShapes = selectedShapes.length === 0 || selectedShapes.includes('all')
@@ -30,7 +36,7 @@ function Basemap({ shapes, setShapes, selectedShapes }) {
 
     return (
         <div className="App">
-            <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+            <Map center={position} zoom={13} scrollWheelZoom={false}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -41,9 +47,20 @@ function Basemap({ shapes, setShapes, selectedShapes }) {
                     </Popup>
                 </Marker>
                 <Draw shapes={shapes} setShapes={setShapes} />
-                
-                <ExportButton />  {/* Add the ExportButton component */}
-            </MapContainer>
+                <PrintControl
+                ref={printControlRef}
+                position="topleft"
+                sizeModes={["Current", "A4Portrait", "A4Landscape"]}
+                hideControlContainer={false}
+              />
+              <PrintControl
+                position="topleft"
+                sizeModes={["Current", "A4Portrait", "A4Landscape"]}
+                hideControlContainer={false}
+                title="Export as PNG"
+                exportOnly
+              />
+            </Map>
         </div>
     );
 }
