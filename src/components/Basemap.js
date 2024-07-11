@@ -20,13 +20,13 @@ function Basemap({ shapes, setShapes, selectedShapes }) {
             case 'marker':
                 return <Marker key={shape.name} position={shape.layer.getLatLng()}><Popup>{shape.name}</Popup></Marker>;
             case 'circle':
-                return <Circle key={shape.name} center={shape.layer.getLatLng()} radius={shape.layer.getRadius()} />;
+                return <Circle key={shape.name} center={shape.layer.getLatLng()} radius={shape.layer.getRadius()}><Popup>{shape.name}</Popup></Circle>;
             case 'polygon':
-                return <Polygon key={shape.name} positions={shape.layer.getLatLngs()} />;
+                return <Polygon key={shape.name} positions={shape.layer.getLatLngs()}><Popup>{shape.name}</Popup></Polygon>;
             case 'polyline':
-                return <Polyline key={shape.name} positions={shape.layer.getLatLngs()} />;
+                return <Polyline key={shape.name} positions={shape.layer.getLatLngs()}><Popup>{shape.name}</Popup></Polyline>;
             case 'rectangle':
-                return <Rectangle key={shape.name} bounds={shape.layer.getBounds()} />;
+                return <Rectangle key={shape.name} bounds={shape.layer.getBounds()}><Popup>{shape.name}</Popup></Rectangle>;
             default:
                 return null;
         }
