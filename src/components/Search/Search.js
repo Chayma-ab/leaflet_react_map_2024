@@ -1,41 +1,28 @@
+import React from 'react';
+import './search.css';
 
-import React, { useState,useEffect } from 'react';
-import  './search.css'
-
-
-function Search({shapes}) {
-  const [selectedValue, setSelectedValue] = useState('option1'); // Initial selected value
-
-    var shapes = []
-
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
-  };
-
-  useEffect(() => {
-    
-    
-  }, [shapes]);
-
-  setInterval(()=>{
-    if(localStorage.getItem("Shapes")){
-        shapes = JSON.parse(localStorage.getItem("Shapes"))
-        console.log(shapes)
-    }
-  }, 1000)
-
-  return (
-    <div>
-      <select value={selectedValue} onChange={handleChange}>
-        {
-            shapes?.map((val, key)=> (
-                <option value={val}>{val}</option>
-            ))
+function Search({ shapes, selectedShapes, setSelectedShapes }) {
+    const handleChange = (event) => {
+        const options = event.target.options;
+        const selected = [];
+        for (let i = 0, l = options.length; i < l; i++) {
+            if (options[i].selected) {
+                selected.push(options[i].value);
+            }
         }
-      </select>
-    </div>
-  );
+        setSelectedShapes(selected);
+    };
 
+    return (
+        <div>
+            <select multiple={true} value={selectedShapes} onChange={handleChange}>
+                <option value="all">All</option>
+                {shapes.map((shape, key) => (
+                    <option key={key} value={shape.name}>{shape.name}</option>
+                ))}
+            </select>
+        </div>
+    );
 }
 
 export default Search;

@@ -1,22 +1,18 @@
-//import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 import Basemap from './components/Basemap';
 import Navbar from './components/Navbar/Navbar';
 
-
-
-
 function App() {
-  
-     
-  return (
-    <div>
-        <Navbar />
-        <Basemap />
+    const [shapes, setShapes] = useState([]);
+    const [selectedShapes, setSelectedShapes] = useState([]);
 
-    </div>
-    
-  );
+    return (
+        <div>
+            <Navbar shapes={shapes} selectedShapes={selectedShapes} setSelectedShapes={setSelectedShapes} />
+            <Basemap shapes={shapes} setShapes={setShapes} selectedShapes={selectedShapes} />
+        </div>
+    );
 }
 
 export default App;

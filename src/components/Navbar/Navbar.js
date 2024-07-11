@@ -1,12 +1,12 @@
 import React from 'react';
-import './Navbar.css'
+import './Navbar.css';
 import Search from '../Search/Search';
 
-function Navbar() {
+function Navbar({ shapes, selectedShapes, setSelectedShapes }) {
     return (
-       <div>
-        <Search  />
-       </div>
+        <div>
+            <Search shapes={shapes} selectedShapes={selectedShapes} setSelectedShapes={setSelectedShapes} />
+        </div>
     );
 }
 
