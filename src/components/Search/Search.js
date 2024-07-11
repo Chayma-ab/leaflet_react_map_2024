@@ -37,7 +37,7 @@ function Search({ shapes, setShapes, selectedShapes, setSelectedShapes }) {
             </select> */}
             <Dropdown className="mainDropdown" onSelect={function(evt){console.log(evt)}}>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    Dropdown Button
+                   Select Feature
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu >

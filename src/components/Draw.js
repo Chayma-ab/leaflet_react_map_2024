@@ -25,8 +25,9 @@ function Draw({ shapes, setShapes }) {
     const _created = (e) => {
         const name = prompt('What is the object name:', 'write name here');
         const obj = new Shape(e.layerType, name, e.layer);
-        e.layer.remove()
+       // e.layer.remove()
         setShapes((prevShapes) => [...prevShapes, obj]);
+        
     };
 
     return (
